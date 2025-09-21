@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm New Medicine</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #2ecc71; /* Green color for positive action */
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        .btn-confirm {
+            padding: 12px 25px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #2ecc71; /* Green color for "Yes, Add" button */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-confirm:hover {
+            background-color: #27ae60;
+        }
+        .btn-cancel {
+            padding: 12px 25px;
+            font-size: 1em;
+            color: #333;
+            background-color: #ecf0f1;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-cancel:hover {
+            background-color: #dcdde1;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block title %}All Medicine Data{% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <h1>✅ Confirm New Medicine</h1>
+        <p>Are you sure you want to add the following medicine?</p>
+        
+        <ul>
+            <li><strong>Time:</strong> {{ time }}</li>
+            <li><strong>Name:</strong> {{ name }}</li>
+            <li><strong>Quantity:</strong> {{ amount }}</li>
+            <li><strong>Container:</strong> {{ container }}</li>
+        </ul>
+        
+        <form action="/do_add_med" method="post" style="display: inline;">
+            <input type="hidden" name="med_time" value="{{ time }}">
+            <input type="hidden" name="med_name" value="{{ name }}">
+            <input type="hidden" name="med_amount" value="{{ amount }}">
+            <input type="hidden" name="container" value="{{ container }}">
+            <button type="submit" class="btn-confirm">Yes, Add</button>
+        </form>
+        <a href="/edit" class="btn-cancel">No, Cancel</a>
+    </div>
+    {% endblock %}
+</body>
+</html>

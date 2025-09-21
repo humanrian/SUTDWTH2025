@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Configuration{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>⚙️ Application Configuration</h1>
+    <p>Edit the application credentials and settings here.</p>
+
+    <form action="/save_config" method="post">
+        <h2>Login Credentials</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="{{ LOGIN_USERNAME }}" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" value="{{ LOGIN_PASSWORD }}" required>
+
+        <label for="patient_username">Patient Username:</label>
+        <input type="text" id="patient_username" name="patient_username" value="{{ PATIENT_USERNAME }}" required>
+
+        <label for="patient_password">Patient Password:</label>
+        <input type="password" id="patient_password" name="patient_password" value="{{ PATIENT_PASSWORD }}" required>
+
+        <h2>Twilio Settings</h2>
+        <label for="twilio_sid">Account SID:</label>
+        <input type="text" id="twilio_sid" name="twilio_sid" value="{{ TWILIO_ACCOUNT_SID }}" required>
+
+        <label for="twilio_token">Auth Token:</label>
+        <input type="text" id="twilio_token" name="twilio_token" value="{{ TWILIO_AUTH_TOKEN }}" required>
+        
+        <label for="twilio_number">Twilio Number:</label>
+        <input type="text" id="twilio_number" name="twilio_number" value="{{ TWILIO_NUMBER }}" required>
+        
+        <label for="recipient_number">Recipient Number:</label>
+        <input type="text" id="recipient_number" name="recipient_number" value="{{ RECIPIENT_NUMBER }}" required>
+
+        <label for="care_number">Caregiver Number:</label>
+        <input type="text" id="care_number" name="care_number" value="{{ CARE_NUMBER }}" required>
+        
+        <label for="call_language">Call Language:</label>
+        <select id="call_language" name="call_language" required>
+            <option value="English" {% if CALL_LANGUAGE == 'English' %}selected{% endif %}>English</option>
+            <option value="Chinese" {% if CALL_LANGUAGE == 'Chinese' %}selected{% endif %}>Chinese</option>
+        </select>
+
+        <h2>Notification API Settings</h2>
+        <label for="notificationapi1d">Notification API 1D:</label>
+        <input type="text" id="notificationapi1d" name="notificationapi1d" value="{{ NOTIFICATIONAPI1D }}" required>
+
+        <label for="notificationapi2d">Notification API 2D:</label>
+        <input type="text" id="notificationapi2d" name="notificationapi2d" value="{{ NOTIFICATIONAPI2D }}" required>
+
+        <label for="notificationapiid">Notification API ID:</label>
+        <input type="text" id="notificationapiid" name="notificationapiid" value="{{ NOTIFICATIONAPIID }}" required>
+
+        <h2>Arduino Settings</h2>
+        <label for="arduino_port">Arduino Port (e.g., COM11):</label>
+        <input type="text" id="arduino_port" name="arduino_port" value="{{ ARDUINO_PORT }}" required>
+
+        <button type="submit" class="btn-submit">Save Configuration</button>
+    </form>
+</div>
+{% endblock %}

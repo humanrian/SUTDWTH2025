@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PillRemind - Supporting Independent Elderly Care</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            margin: 50px auto;
+        }
+        .hero {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #e8f3ff, #d1e1ff);
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 3em;
+        }
+        h2 {
+            color: #3498db;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        p.subtitle {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section {
+            padding: 40px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .section-header {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .feature-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+        }
+        .feature-card h3 svg {
+            margin-right: 10px;
+        }
+        .team-list {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .team-member {
+            background-color: #ecf0f1;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .btn {
+            display: block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            text-decoration: none;
+            color: #fff;
+            background-color: #3498db;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            margin: 0 auto;
+            border: none;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>PillRemind, Designed by Humans</h1>
+            <h2>Solution for Independent Elderly Care</h2>
+            <p class="subtitle">Our system is a solution designed to give caregivers the flexibility to manage medication schedules, monitor adherence, and improve patient safety.</p>
+        </div>
+
+        <div class="section">
+            <h3 class="section-header">Problem Context</h3>
+            <p>Older adults often forget to take their medicine on time, which can affect their health. Current reminder tools are frequently difficult to use or lack personalisation. Many older adults also feel uncomfortable depending on caregivers for such routine tasks, as it affects their sense of independence. A simple and easy reminder system is needed to help them take medicine on time while staying independent.</p>
+        </div>
+
+        <div class="section">
+            <h3 class="section-header">Our Solution</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-call"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.95M18 12.08a6.36 6.36 0 0 0-2.83-2.83c-1.63-.6-3.38-.2-4.9.46-.72.3-1.4.67-2.02 1.1-.4.27-.8.55-1.16.84-.7.5-1.37 1.2-1.92 2-2.12 3.06-2.58 6.3-1.6 9.46l.73.97L.97 22l-1.92-1.92 1.6-1.6l-1.92-1.92.73.97-1.6-1.6z"></path></svg>Automated Reminders Module</h3>
+                    <p>The system makes voice calls in multiple languages to remind patients to take their medicine. This can be paried with hardware that has light, buzzer, and vibration alerts.</p>
+                </div>
+                <div class="feature-card">
+                    <h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-watch"><circle cx="12" cy="12" r="7"></circle><path d="M12 9v4l2 2"></path><path d="M12 9v4l2 2"></path></svg>Pill Dispenser Module</h3>
+                    <p>In future development, we can create a modular pill dispenser system that can hold up to 10 different types of pills, allowing for flexible medication management. The dispenser is designed for the most common medication types given to patients.</p>
+                </div>
+                <div class="feature-card">
+                    <h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Web-Based Control Module</h3>
+                    <p>Caregivers can easily track and manage medication schedules, patient engagement, and dispenser status from a simple website interface.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3 class="section-header">How It Works</h3>
+            <p>Our solution streamlines the entire medication process for both caregivers and patients:</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Weekly Setup</h3>
+                    <p>For hardware, staff or helpers load each of the 10 compartments with up to a week's worth of medication, aligning with typical care routines.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Scheduled Alerts</h3>
+                    <p>At the set time, the pill reminder system will give the care receiver a call to remind them to take their medication.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Real-Time Notifications</h3>
+                    <p>Caregivers and family members are instantly updated on whether a dose was taken or missed, ensuring timely intervention.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-header">The Team</h3>
+            <ul class="team-list">
+                <li class="team-member">Kai Yi</li>
+                <li class="team-member">Jee Yan</li>
+                <li class="team-member">Cheryl</li>
+                <li class="team-member">Sui You</li>
+            </ul>
+        </div>
+        
+        <a href="/login" class="btn">Login to Manage Care</a>
+    </div>
+</body>
+</html>

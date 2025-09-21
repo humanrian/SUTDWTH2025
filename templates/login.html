@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>🔑 Login</h1>
+    <p>Please log in to continue.</p>
+
+    <form action="/login_attempt" method="post" class="form-center">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="message-box error">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit" class="btn-submit">Log In</button>
+    </form>
+</div>
+{% endblock %}

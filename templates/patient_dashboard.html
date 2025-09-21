@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medication Dispenser - My Schedule</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #2ecc71;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+            color: #555;
+        }
+        .data-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .taken-med-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 0;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block title %}My Medication Schedule{% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <h1>🗓️ My Medication Schedule</h1>
+        <p>Here is your upcoming medication schedule. You cannot edit or delete this information.</p>
+        
+        <div id="medication-button-container">
+            {% if meds_to_take_now %}
+            <button class="taken-med-btn">Taken medication</button>
+            {% endif %}
+        </div>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Container</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <a href="/logout" class="back-link">← Log Out</a>
+    </div>
+    <script>
+        function checkMedicationTime() {
+            fetch('/patient_dashboard')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const newContent = doc.querySelector('.container').innerHTML;
+                    document.querySelector('.container').innerHTML = newContent;
+                    addEventListeners();
+                });
+        }
+        
+        function addEventListeners() {
+            const button = document.querySelector('.taken-med-btn');
+            if (button) {
+                button.addEventListener('click', () => {
+                    fetch('/taken_medication', {
+                        method: 'POST',
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log("Medication marked as taken.");
+                            button.remove();
+                        }
+                    });
+                });
+            }
+        }
+        
+        setInterval(checkMedicationTime, 60000);
+        
+        addEventListeners();
+    </script>
+    {% endblock %}
+</body>
+</html>

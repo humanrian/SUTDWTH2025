@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Deletion</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        .btn-confirm {
+            padding: 12px 25px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-confirm:hover {
+            background-color: #c0392b;
+        }
+        .btn-cancel {
+            padding: 12px 25px;
+            font-size: 1em;
+            color: #333;
+            background-color: #ecf0f1;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-cancel:hover {
+            background-color: #dcdde1;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block title %}All Medicine Data{% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <h1>⚠️ Confirm Deletion</h1>
+        <p>Are you sure you want to delete the following medicine?</p>
+        
+        <ul>
+            <li><strong>Time:</strong> {{ med_data[0] }}</li>
+            <li><strong>Name:</strong> {{ med_data[1] }}</li>
+            <li><strong>Quantity:</strong> {{ med_data[2] }}</li>
+            <li><strong>Container:</strong> {{ med_data[3] }}</li>
+        </ul>
+        
+        <form action="/delete_med" method="post" style="display: inline;">
+            <input type="hidden" name="med_name_delete" value="{{ med_data[1] }}">
+            <button type="submit" class="btn-confirm">Yes, Delete</button>
+        </form>
+        <a href="/edit" class="btn-cancel">No, Cancel</a>
+    </div>
+    {% endblock %}
+</body>
+</html>

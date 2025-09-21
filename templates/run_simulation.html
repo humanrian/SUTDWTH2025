@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Run Simulation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .form-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        label {
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 250px;
+        }
+        .btn-submit {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #2ecc71;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 250px;
+        }
+        .btn-submit:hover {
+            background-color: #27ae60;
+        }
+        .back-link {
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block title %}Run Simulation{% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <h1>▶️ Run Simulation</h1>
+        <form action="/dispense" method="post" class="form-center">
+            <label for="timing">Select timing to dispense:</label>
+            <select id="timing" name="timing">
+                {% for time in unique_times %}
+                    <option value="{{ time }}">{{ time }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Dispense Medicine" class="btn-submit">
+        </form>
+    </div>
+    <a href="/index" class="back-link">← Back to main menu</a>
+    {% endblock %}
+</body>
+</html>
